@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GRACE - HR Partner</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   GLOBAL & SCROLLING FIX
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    color: #1e293b;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.page {
+    width: 100%;
+    min-height: 1050px;
+    position: relative;
+}
+
+
+/* =========================================================
+   TOP HEADER
+========================================================= */
+
+.header {
+    height: 76px;
+    padding: 20px 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f1f5f9;
+    background: #ffffff;
+    position: relative;
+    z-index: 10;
+    width: calc(100% - 450px);
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.back-btn {
+    border: none;
+    background: #f8fafc;
+    padding: 8px 14px;
+    border-radius: 8px;
+    color: #475569;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background: #f1f5f9;
+}
+
+.breadcrumb-arrow {
+    color: #cbd5e1;
+    font-size: 20px;
+}
+
+.breadcrumb-current {
+    color: #334155;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   MAIN CONTENT AREA
+========================================================= */
+
+.content {
+    min-height: calc(100vh - 76px);
+    display: flex;
+    position: relative;
+}
+
+
+/* =========================================================
+   LEFT SECTION
+========================================================= */
+
+.left-panel {
+    width: calc(100% - 450px);
+    min-height: 100%;
+    padding: 28px 42px 35px 42px;
+}
+
+
+/* =========================================================
+   AGENT HEADER
+========================================================= */
+
+.agent-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 27px;
+}
+
+.agent-avatar {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #dbeafe, #ede9fe);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sora', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #2563eb;
+    border: 3px solid #ffffff;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
+}
+
+.agent-title h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: 30px;
+    line-height: 1.15;
+    color: #334155;
+    font-weight: 700;
+}
+
+.agent-title p {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.tabs {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    background: #f8fafc;
+    border-radius: 22px;
+    padding: 4px;
+    margin-bottom: 22px;
+    border: 1px solid #f1f5f9;
+}
+
+.tab {
+    border: none;
+    background: transparent;
+    padding: 10px 17px;
+    border-radius: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.tab:hover {
+    color: #334155;
+}
+
+.tab.active {
+    background: #ffffff;
+    color: #7c5ce6;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.07);
+}
+
+
+/* =========================================================
+   TAB CONTENT
+========================================================= */
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+/* =========================================================
+   ACCORDION (AGENT FUNCTIONALITIES)
+========================================================= */
+
+.capability-group {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.group-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 17px 10px;
+    border: none;
+    background: #ffffff;
+    color: #334155;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+
+.group-header:hover {
+    background: #fafafa;
+}
+
+.group-header .plus {
+    font-size: 20px;
+    font-weight: 400;
+    color: #64748b;
+    transition: transform 0.25s ease;
+}
+
+.capability-group.open .plus {
+    transform: rotate(45deg);
+}
+
+.group-body {
+    display: none;
+    padding: 0 10px 14px 10px;
+    animation: slideDown 0.2s ease;
+}
+
+.capability-group.open .group-body {
+    display: block;
+}
+
+.capability-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    margin: 4px 0;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #475569;
+    background: #fafafa;
+}
+
+.capability-item:hover {
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+.capability-icon {
+    width: 6px;
+    height: 6px;
+    background: #7c5ce6;
+    border-radius: 50%;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   GREY CARD STYLE
+========================================================= */
+
+.info-card {
+    border: 1px solid #ebf0f5;
+    border-radius: 16px;
+    padding: 28px 32px;
+    background: #f8fafc;
+    max-width: 850px;
+}
+
+.info-card h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 20px;
+    color: #1e293b;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.card-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #64748b;
+    margin-bottom: 24px;
+}
+
+.clean-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.clean-list li {
+    font-size: 14px;
+    font-weight: 500;
+    color: #475569;
+    padding: 16px 0;
+    border-top: 1px solid #e2e8f0;
+    transition: color 0.2s ease;
+}
+
+.clean-list li:hover {
+    color: #1e293b;
+}
+
+
+/* =========================================================
+   RIGHT PANEL
+========================================================= */
+
+.right-panel {
+    width: 460px;
+    height: 945px;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    overflow: visible;
+    background: transparent;
+    z-index: 100;
+    transform: scale(0.92);
+    transform-origin: top right;
+}
+
+#mobile-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#mobile-container iframe,
+#mobile-container > div {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    outline: none !important;
+}
+
+
+/* =========================================================
+   ANIMATION & RESPONSIVE
+========================================================= */
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1000px) {
+    .header, .left-panel { width: 100%; }
+    .right-panel { display: none; }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+  <header class="header">
+    <div class="breadcrumb">
+        <button class="back-btn" onclick="location.href='index.html'">Back</button>
+        <span class="breadcrumb-arrow">›</span>
+        <span class="breadcrumb-current">Grace</span>
+    </div>
+</header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <!-- LEFT PANEL -->
+        <section class="left-panel">
+
+            <div class="agent-header">
+                <div class="agent-avatar">G</div>
+                <div class="agent-title">
+                    <h1>Meet Grace,</h1>
+                    <p>Your HR Partner</p>
+                </div>
+            </div>
+
+            <!-- TABS -->
+            <div class="tabs">
+                <button class="tab active" onclick="openTab('functionalities', this)">Agent Functionalities</button>
+                <button class="tab" onclick="openTab('agentic', this)">Agentic Platform Capabilities</button>
+                <button class="tab" onclick="openTab('configuration', this)">HR System Configuration</button>
+                <button class="tab" onclick="openTab('conversation', this)">Conversational Intelligence</button>
+            </div>
+
+            <!-- TAB 1: AGENT FUNCTIONALITIES -->
+            <div id="functionalities" class="tab-content active">
+
+                <div class="capability-group">
+                    <button class="group-header" onclick="toggleGroup(this)">
+                        <span>Recruitment & Career</span>
+                        <span class="plus">+</span>
+                    </button>
+                    <div class="group-body">
+                        <div class="capability-item"><span class="capability-icon"></span>job_opening</div>
+                        <div class="capability-item"><span class="capability-icon"></span>internalTransfer</div>
+                    </div>
+                </div>
+
+                <div class="capability-group">
+                    <button class="group-header" onclick="toggleGroup(this)">
+                        <span>Onboarding & Orientation</span>
+                        <span class="plus">+</span>
+                    </button>
+                    <div class="group-body">
+                        <div class="capability-item"><span class="capability-icon"></span>onboardingTasks</div>
+                        <div class="capability-item"><span class="capability-icon"></span>orientation_Scheduling</div>
+                    </div>
+                </div>
+
+                <div class="capability-group">
+                    <button class="group-header" onclick="toggleGroup(this)">
+                        <span>Benefits & Compensation</span>
+                        <span class="plus">+</span>
+                    </button>
+                    <div class="group-body">
+                        <div class="capability-item"><span class="capability-icon"></span>benefits_enrollment</div>
+                    </div>
+                </div>
+
+                <div class="capability-group">
+                    <button class="group-header" onclick="toggleGroup(this)">
+                        <span>Leave & Attendance</span>
+                        <span class="plus">+</span>
+                    </button>
+                    <div class="group-body">
+                        <div class="capability-item"><span class="capability-icon"></span>get_upcoming_holidays</div>
+                        <div class="capability-item"><span class="capability-icon"></span>Medical Leave</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- TAB 2: AGENTIC PLATFORM CAPABILITIES -->
+            <div id="agentic" class="tab-content">
+                <div class="info-card">
+                    <h3>Agentic Platform Capabilities</h3>
+                    <p class="card-description">Grace uses autonomous conversational workflows to understand HR inquiries, automate onboarding and benefits requests, and seamlessly assist employees throughout their lifecycle.</p>
+                    <ul class="clean-list">
+                        <li>Autonomous Problem Solving</li>
+                        <li>Multi-Step HR Workflow Execution</li>
+                        <li>Proactive Policy & Benefit Alerts</li>
+                        <li>Seamless HR Specialist Handoff</li>
+                        <li>Automated Communication Dispatch</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TAB 3: HR SYSTEM CONFIGURATION -->
+            <div id="configuration" class="tab-content">
+                <div class="info-card">
+                    <h3>HR System Configuration</h3>
+                    <p class="card-description">Grace integrates deeply with enterprise HRIS infrastructure to synchronize employee records, automate leave requests, and streamline onboarding workflows.</p>
+                    <ul class="clean-list">
+                        <li>Bi-directional HR Data Syncing</li>
+                        <li>Intelligent Request Classification</li>
+                        <li>HR Service Catalog Integration</li>
+                        <li>Automated Approval Escalations</li>
+                        <li>Employee Profile & Benefits Synchronization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TAB 4: CONVERSATIONAL INTELLIGENCE -->
+            <div id="conversation" class="tab-content">
+                <div class="info-card">
+                    <h3>Conversational Intelligence</h3>
+                    <p class="card-description">Powered by advanced generative AI, Grace interprets natural human queries, retrieves HR policy insights, and handles complex multi-modal interactions effortlessly.</p>
+                    <ul class="clean-list">
+                        <li>Natural Language Understanding (NLU)</li>
+                        <li>RAG-Powered HR Policy Search</li>
+                        <li>Context-Aware Employee Support Engine</li>
+                        <li>Multi-Modal Interaction Support</li>
+                        <li>Sentiment & Intent Detection</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RIGHT PANEL -->
+    <section class="right-panel">
+        <div id="mobile-container"></div>
+    </section>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script>
+function openTab(tabId, clickedTab) {
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(function(content) {
+        content.classList.remove('active');
+    });
+
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(function(tab) {
+        tab.classList.remove('active');
+    });
+
+    document.getElementById(tabId).classList.add('active');
+    clickedTab.classList.add('active');
+}
+
+function toggleGroup(button) {
+    const group = button.parentElement;
+    group.classList.toggle('open');
+}
+</script>
+
+<!-- AVAAMO SCRIPT -->
+<script type="text/javascript"> 
+var AvaamoAgentic = function(t) {
+    return this.options = t || {}, this.init = function(t) {
+        var i, n, e;
+        i = this.options, n = function(i) {
+            var n = setInterval(function() {
+                if (window.PromptWidget) {
+                    window.PromptWidget.init(i.container || "#mobile-container");
+                    if ("function" == typeof t) t();
+                    clearInterval(n);
+                }
+            }, 100);
+        }, (e = document.createElement("script")).setAttribute("type", "text/javascript"), e.setAttribute("src", i.url), e.setAttribute("id", "avm-web-channel"), e.onload = n(i), document.body.appendChild(e);
+    }, this;
+}; 
+
+var widget = new AvaamoAgentic({
+    url: "https://c0.avaamo.com/web_channel/channel/d9908341-b1e7-41f3-9443-ce2d42ee5d23/agentic_agents/widget.js", 
+    container: "#mobile-container"
+}); 
+
+widget.init(); 
+</script>
+
+</body>
+</html>

@@ -1,598 +1,804 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FAITH - IT Helpdesk Agent</title>
+    <title>FAITH - IT Helpdesk Agent</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-<style>
-
-/* =========================================================
+    <style>
+        /* =========================================================
    GLOBAL & SCROLLING FIX
 ========================================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html,
-body {
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
+        :root {
+            /* Developer blue */
+            --main-color: #2563eb;
+            --main-color-light: #60a5fa;
+            --main-color-dark: #1d4ed8;
+        }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background: #ffffff;
-    color: #1e293b;
-}
+        html,
+        body {
+            width: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1e293b;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    MAIN PAGE
 ========================================================= */
 
-.page {
-    width: 100%;
-    min-height: 1050px;
-    position: relative;
-}
+        .page {
+            width: 100%;
+            min-height: 1050px;
+            position: relative;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    TOP HEADER
 ========================================================= */
 
-.header {
-    height: 76px;
-    padding: 20px 42px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #f1f5f9;
-    background: #ffffff;
-    position: relative;
-    z-index: 10;
-    width: calc(100% - 450px);
-}
+        .header {
+            height: 76px;
+            padding: 20px 42px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #f1f5f9;
+            background: #ffffff;
+            position: relative;
+            z-index: 10;
+            width: calc(100% - 450px);
+        }
 
-.breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    font-size: 14px;
-    color: #64748b;
-}
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            font-size: 14px;
+            color: #64748b;
+        }
 
-.back-btn {
-    border: none;
-    background: #f8fafc;
-    padding: 8px 14px;
-    border-radius: 8px;
-    color: #475569;
-    font-size: 13px;
-    cursor: pointer;
-}
+        .back-btn {
+            border: none;
+            background: #f8fafc;
+            padding: 8px 14px;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 13px;
+            cursor: pointer;
+            background: linear-gradient(135deg,
+                    var(--main-color-dark),
+                    var(--main-color-light));
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.20);
+        }
 
-.back-btn:hover {
-    background: #f1f5f9;
-}
+        .back-btn:hover {
+            transform: translateX(-2px);
 
-.breadcrumb-arrow {
-    color: #cbd5e1;
-    font-size: 20px;
-}
+            box-shadow:
+                0 15px 35px rgba(37, 99, 135, 0.30);
+        }
 
-.breadcrumb-current {
-    color: #334155;
-    font-weight: 600;
-}
+        .breadcrumb-arrow {
+            color: #cbd5e1;
+            font-size: 20px;
+        }
+
+        .breadcrumb-current {
+            color: #334155;
+            font-weight: 600;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    MAIN CONTENT AREA
 ========================================================= */
 
-.content {
-    min-height: calc(100vh - 76px);
-    display: flex;
-    position: relative;
-}
+        .content {
+            min-height: calc(100vh - 76px);
+            display: flex;
+            position: relative;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    LEFT SECTION
 ========================================================= */
 
-.left-panel {
-    width: calc(100% - 450px);
-    min-height: 100%;
-    padding: 28px 42px 35px 42px;
-}
+        .left-panel {
+            width: calc(100% - 450px);
+            min-height: 100%;
+            padding: 28px 42px 35px 42px;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    AGENT HEADER
 ========================================================= */
 
-.agent-header {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-bottom: 27px;
-}
+        .agent-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 27px;
+        }
 
-.agent-avatar {
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #dbeafe, #ede9fe);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Sora', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    color: #2563eb;
-    border: 3px solid #ffffff;
-    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
-}
+        .agent-avatar {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #dbeafe, #ede9fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sora', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #2563eb;
+            border: 3px solid #ffffff;
+            box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
+        }
 
-.agent-title h1 {
-    font-family: 'Sora', sans-serif;
-    font-size: 30px;
-    line-height: 1.15;
-    color: #334155;
-    font-weight: 700;
-}
+        .agent-title h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: 30px;
+            line-height: 1.15;
+            color: #334155;
+            font-weight: 700;
+        }
 
-.agent-title p {
-    margin-top: 5px;
-    font-size: 14px;
-    color: #64748b;
-}
+        .agent-title p {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #64748b;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    TABS
 ========================================================= */
 
-.tabs {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    background: #f8fafc;
-    border-radius: 22px;
-    padding: 4px;
-    margin-bottom: 22px;
-    border: 1px solid #f1f5f9;
-}
+        .tabs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            background: #f8fafc;
+            border-radius: 22px;
+            padding: 6px;
+            margin-bottom: 22px;
+            border: 1px solid #f1f5f9;
 
-.tab {
-    border: none;
-    background: transparent;
-    padding: 10px 17px;
-    border-radius: 18px;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: #64748b;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
+            /* 📱 RESPONSIVE FIX: Enables smooth mobile horizontal scrolling if tabs overflow */
+            max-width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
 
-.tab:hover {
+            /* Hides messy scrollbars on Webkit browsers (Chrome/Safari) */
+            -webkit-overflow-scrolling: touch;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hides scrollbars for Firefox & IE */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .tab {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+
+            border: none;
+            background: transparent;
+            padding: 10px 16px;
+            border-radius: 18px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            line-height: 1;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: 0.2s ease;
+            flex-shrink: 0;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .tab-icon {
+            display: inline-block;
+            width: 20px;
+            /* Adjust width as needed */
+            height: 20px;
+            /* Adjust height as needed */
+            vertical-align: middle;
+            margin-right: 8px;
+            /* Spacing between icon and text */
+
+            /* Grabs the unique image string from the HTML style attribute */
+            -webkit-mask-image: var(--icon-url);
+            mask-image: var(--icon-url);
+
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+
+            /* 🎨 DEFAULT COLOR (When tab is inactive) */
+            background-color: #888888;
+            transition: background-color 0.2s ease;
+            /* Smooth color transition */
+        }
+
+        .tab:hover {
+            color: #334155;
+        }
+
+        .tab.active {
+            background: #ffffff;
+            color: #7c5ce6;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.07);
+            animation-name: premiumPulse;
+            animation-duration: 0.35s;
+            animation-fill-mode: both;
+            animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .tab.active .tab-icon {
+            background-color: #2563eb;
+            /* Replace with your desired active color */
+            /* Apply the animate.css for bounce */
+            animation: bounce 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+        }
+
+        /* 🔄 Smoothly resets the icon when hovering out/switching tabs */
+        .tab .tab-icon {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+        /* 📦 Animate.css Bounce Keyframes (Included directly so you don't rely on extra HTML classes) */
+        @keyframes bounce {
+
+            from,
+            20%,
+            53%,
+            80%,
+            to {
+                transform: translate3d(0, 0, 0);
+            }
+
+            40%,
+            43% {
+                transform: translate3d(0, -6px, 0) scaleY(1.1);
+            }
+
+            70% {
+                transform: translate3d(0, -4px, 0) scaleY(1.05);
+            }
+
+            90% {
+                transform: translate3d(0, -2px, 0) scaleY(1.02);
+            }
+        }
+
+        /* Tab transition */
+        /* ==========================================
+   ANIMATION KEYFRAMES
+   ========================================== */
+        @keyframes premiumPulse {
+            from {
+                transform: scale3d(1, 1, 1);
+            }
+
+            30% {
+                transform: scale3d(0.96, 0.96, 0.96);
+                /* Subtle tactile "press down" effect */
+            }
+
+            65% {
+                transform: scale3d(1.03, 1.03, 1.03);
+                /* Soft elastic recovery rebound */
+            }
+
+            to {
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        /* tab resposive and mobile optimization */
+        /* 📱 MOBILE MEDIA QUERY Optimization */
+        @media (max-width: 600px) {
+            .tabs {
+                width: 100%;
+                /* Allows container to span full width on phone screens */
+                border-radius: 16px;
+                /* Slightly tighter radius for smaller viewports */
+                padding: 4px;
+                gap: 4px;
+            }
+
+            .tab {
+                padding: 8px 12px;
+                /* Reduces padding slightly so more tabs fit on screen */
+                border-radius: 12px;
+                font-size: 12px;
+            }
+
+            .tab-icon {
+                width: 16px;
+                /* Shrinks down beautifully on mobile layouts */
+                height: 16px;
+                margin-right: 6px;
+            }
+        }
+
+        
+
+        /* Optional: Change color on hover */
+        /* .tab:hover .tab-icon {
+    background-color: #475569;
     color: #334155;
-}
+} */
 
-.tab.active {
-    background: #ffffff;
-    color: #7c5ce6;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.07);
-}
-
-
-/* =========================================================
+        /* =========================================================
    TAB CONTENT
 ========================================================= */
 
-.tab-content {
-    display: none;
-}
+        .tab-content {
+            display: none;
+        }
 
-.tab-content.active {
-    display: block;
-}
+        .tab-content.active {
+            display: block;
+
+        }
 
 
-/* =========================================================
+
+
+        /* =========================================================
    ACCORDION (AGENT FUNCTIONALITIES)
 ========================================================= */
 
-.capability-group {
-    border-bottom: 1px solid #e5e7eb;
-}
+        .capability-group {
+            border-bottom: 1px solid #e5e7eb;
+        }
 
-.group-header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 17px 10px;
-    border: none;
-    background: #ffffff;
-    color: #334155;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    text-align: left;
-    cursor: pointer;
-}
+        .group-header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 17px 10px;
+            border: none;
+            background: #ffffff;
+            color: #334155;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+        }
 
-.group-header:hover {
-    background: #fafafa;
-}
+        .group-header:hover {
+            background: #fafafa;
+        }
 
-.group-header .plus {
-    font-size: 20px;
-    font-weight: 400;
-    color: #64748b;
-    transition: transform 0.25s ease;
-}
+        .group-header .plus {
+            font-size: 20px;
+            font-weight: 400;
+            color: #64748b;
+            transition: transform 0.25s ease;
+        }
 
-.capability-group.open .plus {
-    transform: rotate(45deg);
-}
+        .capability-group.open .plus {
+            transform: rotate(45deg);
+        }
 
-.group-body {
-    display: none;
-    padding: 0 10px 14px 10px;
-    animation: slideDown 0.2s ease;
-}
+        .group-body {
+            display: none;
+            padding: 0 10px 14px 10px;
+            animation: slideDown 0.2s ease;
+        }
 
-.capability-group.open .group-body {
-    display: block;
-}
+        .capability-group.open .group-body {
+            display: block;
+        }
 
-.capability-item {
-    display: flex;
-    align-items: center;
-    padding: 10px 14px;
-    margin: 4px 0;
-    border-radius: 8px;
-    font-size: 13px;
-    color: #475569;
-    background: #fafafa;
-}
+        .capability-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 14px;
+            margin: 4px 0;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #475569;
+            background: #fafafa;
+        }
 
-.capability-item:hover {
-    background: #f8fafc;
-    color: #1e293b;
-}
+        .capability-item:hover {
+            background: #f8fafc;
+            color: #1e293b;
+        }
 
-.capability-icon {
-    width: 6px;
-    height: 6px;
-    background: #7c5ce6;
-    border-radius: 50%;
-    margin-right: 12px;
-    flex-shrink: 0;
-}
+        .capability-icon {
+            width: 6px;
+            height: 6px;
+            background: #7c5ce6;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    GREY CARD STYLE
 ========================================================= */
 
-.info-card {
-    border: 1px solid #ebf0f5;
-    border-radius: 16px;
-    padding: 28px 32px;
-    background: #f8fafc;
-    max-width: 850px;
-}
+        .info-card {
+            border: 1px solid #ebf0f5;
+            border-radius: 16px;
+            padding: 28px 32px;
+            background: #f8fafc;
+            max-width: 850px;
+        }
 
-.info-card h3 {
-    font-family: 'Sora', sans-serif;
-    font-size: 20px;
-    color: #1e293b;
-    margin-bottom: 12px;
-    font-weight: 700;
-}
+        .info-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 20px;
+            color: #1e293b;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
 
-.card-description {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #64748b;
-    margin-bottom: 24px;
-}
+        .card-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #64748b;
+            margin-bottom: 24px;
+        }
 
-.clean-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-}
+        .clean-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+        }
 
-.clean-list li {
-    font-size: 14px;
-    font-weight: 500;
-    color: #475569;
-    padding: 16px 0;
-    border-top: 1px solid #e2e8f0;
-    transition: color 0.2s ease;
-}
+        .clean-list li {
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+            padding: 16px 0;
+            border-top: 1px solid #e2e8f0;
+            transition: color 0.2s ease;
+        }
 
-.clean-list li:hover {
-    color: #1e293b;
-}
+        .clean-list li:hover {
+            color: #1e293b;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    RIGHT PANEL
 ========================================================= */
 
-.right-panel {
-    width: 460px;
-    height: 945px;
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    overflow: visible;
-    background: transparent;
-    z-index: 100;
-    transform: scale(0.92);
-    transform-origin: top right;
-}
+        .right-panel {
+            width: 460px;
+            height: 945px;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            overflow: visible;
+            background: transparent;
+            z-index: 100;
+            transform: scale(0.92);
+            transform-origin: top right;
+        }
 
-#mobile-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
+        #mobile-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
 
-#mobile-container iframe,
-#mobile-container > div {
-    width: 100% !important;
-    height: 100% !important;
-    border: none !important;
-    outline: none !important;
-}
+        #mobile-container iframe,
+        #mobile-container>div {
+            width: 100% !important;
+            height: 100% !important;
+            border: none !important;
+            outline: none !important;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    ANIMATION & RESPONSIVE
 ========================================================= */
 
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-4px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-4px);
+            }
 
-@media (max-width: 1000px) {
-    .header, .left-panel { width: 100%; }
-    .right-panel { display: none; }
-}
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-</style>
+        @media (max-width: 1000px) {
+
+            .header,
+            .left-panel {
+                width: 100%;
+            }
+
+            .right-panel {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 
 <body>
 
-<div class="page">
+    <div class="page">
 
-    <!-- HEADER -->
-   <header class="header">
-    <div class="breadcrumb">
-        <button class="back-btn" onclick="location.href='index.html'">Back</button>
-        <span class="breadcrumb-arrow">›</span>
-        <span class="breadcrumb-current">Faith</span>
-    </div>
-</header>
-
-
-    <!-- MAIN CONTENT -->
-    <main class="content">
-
-        <!-- LEFT PANEL -->
-        <section class="left-panel">
-
-            <div class="agent-header">
-                <div class="agent-avatar">F</div>
-                <div class="agent-title">
-                    <h1>Meet Faith,</h1>
-                    <p>Your IT Helpdesk Agent</p>
-                </div>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="breadcrumb">
+                <button class="back-btn" onclick="location.href='index.html'">Back</button>
+                <span class="breadcrumb-arrow">›</span>
+                <span class="breadcrumb-current">Faith</span>
             </div>
+        </header>
 
-            <!-- TABS -->
-            <div class="tabs">
-                <button class="tab active" onclick="openTab('functionalities', this)">Agent Functionalities</button>
-                <button class="tab" onclick="openTab('agentic', this)">Agentic Platform Capabilities</button>
-                <button class="tab" onclick="openTab('configuration', this)">ITSM System Configuration</button>
-                <button class="tab" onclick="openTab('conversation', this)">Conversational Intelligence</button>
-            </div>
 
-            <!-- TAB 1: AGENT FUNCTIONALITIES -->
-            <div id="functionalities" class="tab-content active">
+        <!-- MAIN CONTENT -->
+        <main class="content">
 
-                <div class="capability-group">
-                    <button class="group-header" onclick="toggleGroup(this)">
-                        <span>Authentication & Security</span>
-                        <span class="plus">+</span>
-                    </button>
-                    <div class="group-body">
-                        <div class="capability-item"><span class="capability-icon"></span>sendOTP</div>
-                        <div class="capability-item"><span class="capability-icon"></span>verifyOTP</div>
+            <!-- LEFT PANEL -->
+            <section class="left-panel animate__animated animate__slideInUp ">
+
+                <div class="agent-header">
+                    <div class="agent-avatar">F</div>
+                    <div class="agent-title">
+                        <h1>Meet Faith,</h1>
+                        <p>Your IT Helpdesk Agent</p>
                     </div>
                 </div>
 
-                <div class="capability-group">
-                    <button class="group-header" onclick="toggleGroup(this)">
-                        <span>Incident Management</span>
-                        <span class="plus">+</span>
-                    </button>
-                    <div class="group-body">
-                        <div class="capability-item"><span class="capability-icon"></span>createIncidentTicket</div>
-                        <div class="capability-item"><span class="capability-icon"></span>updateTicket</div>
-                        <div class="capability-item"><span class="capability-icon"></span>closeTicket</div>
-                        <div class="capability-item"><span class="capability-icon"></span>escalateTicket</div>
-                        <div class="capability-item"><span class="capability-icon"></span>addCommentToTicket</div>
+                <!-- TABS -->
+                <div class="tabs animate__animated animate__slideInLeft animate__delay-1.2s">
+                    <button class="tab active " onclick="openTab('functionalities', this)"><span
+                            class="tab-icon animate__animated animate__bounce"
+                            style="--icon-url: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFL0lEQVR4nO2ca4hVVRTHf2OPyWpSK4OsrAx6WZDVNCQKfUgL+lBhz0+BEGUJBb38ZEWk9KEo+1BWVpZUlhEZEZkk9KIiBpumEgYjRHqqaNFoma3YsAYulzv3zpy799lr37N/8IfL3Dtn7/1f956zz9prH8hkMplMJpPJZDKZuBwKzAZuBpYDa4Evga3AT8Au4ADwr77+Rd/7HHgDeBRYDMwFjog9mFQ4H3gY+AjYC4gnuSB9DTwOXAIcFHuglpgG3A9s8Wh4K/0OPAmcToU5DVgJ7CvReKmTO4W9C/RSIY4EHgP2RzReGgTiReB4OpwrgG0GDJdRtBO4ig7EXfSWAf8ZMFlayPXxiU66UPcA7xkwVsapN4FuOuB8/4kBM6Wg3tf7kSQ5XOfzkrhWA10kyKsGzBNPWkJi3G3ANPEoN2XuIxEuMDbHF0/6PoWLspu6fWXALAmkezHOHQFujM4DZunr2AHYDUzFKC7l+6vnAT9Qc/wHDQRANFtrkns8D3Q/cGJd1vQfAwHYpfc3pjhEF0R8DnRdg3bWGQiA0yKMcXWA7OSsBu2cq+/FDsCnGONtzwN8oUlbq40k7GZghMmez83ftDjHuvcGDQThLoywwOOgBoHpY2jzZODbyAHYgBGe9fSTfgWYNI52J2m+KdYagysamIgBhto0foOWnxRltqaNYwRiDpE5quDA3UL8Kp3V+OIcPea+Kl0H5hbs+LyAfbq0xAC4U2BUFhXsuLurDcW0EgOwmcgsK9jxfmC+55WmLv1l9ZcYgGFgAhF5qc0BDAAL28yzd+sxBko0vlZnEpEPPA1iK3BNgfavBX6IZPyIHiIin3kezDOa2GvFwVrbKQbkZl1nEYn+QDOLriZtuvdeM2B8rTbFqpz4LtCA7mvS5pI2Lpi9quEAfb6FCAwEvM2f3qC9E4C/Ch7zuZrjrArQ5z11C0il8EWgAIjmmHzlndwGjbNrjjNT/+a7zy4tXyobAwZgL3BcTVtT29g1U/vtH+H5QP2+PqX7gFZaWtPW0oLH2KI5q0ZFw4OBdt+UVjmxPHAAdurSpNOOgsVUpzTp/6n6Gd/9dqt2pbAwcACkoFyGdg0wZQxjmKKf9Z3OvrwE/7nQgNlSowNa139RgbH06v/6WvT/sYzylYlGanVE5RJ87TLfY39WkGA6QtrQDE+7N33+IvuspqRDaDtwp85wxkuP1rZu99yntwjMHAPGS4Op4G1j3GjnPnM78FugvrhdoUGZoM9uEINa3+JC6L717wTug6tzCs4KA2bLKNqo6et6XNr7wxLad49hCM5MA0ZLE7nrVD2PlNDux8BhlMQmA0ZLk0UTd9c7gpst/R34tLO47C2ulxkwWprIPRjEZzVfo30DK2MXa1nelD2sc/KLPS/IDOna9FiWUoPTZ6R+X0rSkMU9Y08ZMEZK0nUYxGUXfzZgjpSgYzHKjQbMkRJkGsvTUqlCAHoTeUCTdGoA0ExgbJOkygHoNWCSVDkA1m/OpAoBuMmAUVLlALiHePxhwCypagDQso/YZkmVA3CDAbMkQDFuMkwOVAwrEeVKHpNiswHTxKNeJjGeNmCaeFSRPW1RudWAaeJxHcDEAsx4mGfAOPGkK0kQnyV/ElGumiJJjukQ8yeQKN0GDJQ2zvlJnnbqkUT0p+6cWaOzneQuuKMhBrVNH7tWpKI6OSyafzQVQoxpARVDjKmHimFpXWA3FcTSIv1aKsgZWkUc2/wdMR6sYYWTgNd1QaNs4/foN7+y5mcymUwmk8lkMhlM8T8lMqvapqYsQAAAAABJRU5ErkJggg==')"
+                            src="" alt="ai-agent"></span>Agent Functionalities</button>
+                    <button class="tab" onclick="openTab('agentic', this)"><span class="tab-icon"
+                            style="--icon-url: url('data:image/png;base64,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')"
+                            src="" alt="ai-agent-capable"></span>Agentic Platform Capabilities</button>
+                    <button class="tab" onclick="openTab('configuration', this)"><span class="tab-icon"
+                            style="--icon-url: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACaElEQVR4nO2Wu2sWURDFfzEaH8RYxMYiEvFBQEHQRivRQCQ+QFER3/HZK1YGEUHEf8BCBAs7LdR8MZpStLG0EUvBfBpEQZSo8RkZOBsuw72bZb8NIjhwiz337pyZO2dnFv4RGwAm3Ho4nYSLgf1AC7Ad+BoJ4DuwA5gF7AM6qyJfBoyI5GOE2K/szCjQ1Sh5J/CyAGlqvQVWliXvCDJvZNlNLCkTwIEKyLN1rEwALTk1HwK6gTagHegBhhNnPwPz5NNu4h3QXySAbQmH54EZwEmgBtxWhjOBC4l39sjnGT1fn4r8TuJTGxL5YGRvQEHcAH4H+DjQK781YYemCuBXIpNuZZ6qdZ7jZuCDznWUDWBBkEXV60mRANqmMYDHRQLYCJwoWYLQ5gM/1L5bYweGEyIclAhrOSK85hL4AmyOcDzVvn3CUduZyPIc0AQcB+4Bt4A+iaw/8c7eiP8r2ruUCmA28Cnh0G5ggxqM6WITcL9AIwptNfBeJY3awQoFdpSSk/BNBeQ2EZdS0lYArxskX0WD1hXcxFgB0rEq/gVi5TBNzAF2q7974m8aOnbmcCPXXsQeRAKw3vHfKrOtQN1d8VntnXb4TeE9Dn8mfJFrzdaY5qqljwqri3PSYp/ecu09cvgu4VcdflH4KYffFb7e4cY5aZ78ufB2TbEMH9dka4r8Qa9JCPaImwXhak4FcFl4n8Ot/5utdXhdQbW6qfoTWKh3XuQFMOI21gX/iiFu14uuO8StHKg8IW7lyzrsRF4JeoFX2jChmGBMOGEnNGGZwMxMcKGzbMabQEPcBGxmgg5xS3hLGMBfsz+s4deI8x3bhAAAAABJRU5ErkJggg==')"
+                            src="" alt="ai-agent"></span>ITSM System Configuration</button>
+                    <button class="tab" onclick="openTab('conversation', this)"><span class="tab-icon"
+                            style="--icon-url: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8UlEQVR4nO2avUscQRiHH8RKEGLpRSQWpjdgkyq1FukFg4W9ghFNKzYpLsF/we44LEMgvVwjhJBKOz+w8RORS656ZWCEZZnb2zvn9m523gd+zezO7rzP7dze7B4oiqIUzxRQBx5sDoBZIir+BpBUTNtrIqDuKP45NSLgIUPAPRFwmyHATIPSU4t9CswAV47ir+y2KHjjEGDaokJSiQ6JXYASGhJYVIBvJLCoAN9IYFEBvpHAogJ8I4FFBfTCd6AJHALLqW0hC/hkazK1fcsS8D91kLUeBbSATaBis2XbiuqfFLCeav+XJUBSOetRgBlwmu0C+ycFXHQzPSRj525OPuk4dqXA/p3GrQL6LWDbcezPBfYfuICWnccV+2luOL5g+9l/4AJkCKICLCoAFUBuARcRCDjPErCe2rnpUcAi+VnwKKCZ8fPeiVk4NIA7YCfR/tIBnQATdOYVcOxRwK6tpeFY4HWFj8vyr/2LTDvMff+35yngDfEUc0nuAe+AMZs5oAo8ejzP0AqQgqICfCOBRQX4RgKLCvCNBBYV4BsJLCogRN7nLM683FiihHzMUfwlME9JWe1Q/B9gmhLzJaP4H8A4JafapnizfB4hAvYdL0hWiIifieKvgQ9ExlHi+eFbIuQU+GUfjEbJV2B00INQiIgnP7TBzfJjqGcAAAAASUVORK5CYII=')"
+                            src="" alt="ai-agent"></span>Conversational Intelligence</button>
+                </div>
+
+                <!-- TAB 1: AGENT FUNCTIONALITIES -->
+                <div id="functionalities" class="tab-content active animate__animated animate__jackInTheBox">
+
+                    <div class="capability-group">
+                        <button class="group-header" onclick="toggleGroup(this)">
+                            <span>Authentication & Security</span>
+                            <span class="plus">+</span>
+                        </button>
+                        <div class="group-body">
+                            <div class="capability-item"><span class="capability-icon"></span>sendOTP</div>
+                            <div class="capability-item"><span class="capability-icon"></span>verifyOTP</div>
+                        </div>
+                    </div>
+
+                    <div class="capability-group">
+                        <button class="group-header" onclick="toggleGroup(this)">
+                            <span>Incident Management</span>
+                            <span class="plus">+</span>
+                        </button>
+                        <div class="group-body">
+                            <div class="capability-item"><span class="capability-icon"></span>createIncidentTicket</div>
+                            <div class="capability-item"><span class="capability-icon"></span>updateTicket</div>
+                            <div class="capability-item"><span class="capability-icon"></span>closeTicket</div>
+                            <div class="capability-item"><span class="capability-icon"></span>escalateTicket</div>
+                            <div class="capability-item"><span class="capability-icon"></span>addCommentToTicket</div>
+                        </div>
+                    </div>
+
+                    <div class="capability-group">
+                        <button class="group-header" onclick="toggleGroup(this)">
+                            <span>Ticket Tracking & Analytics</span>
+                            <span class="plus">+</span>
+                        </button>
+                        <div class="group-body">
+                            <div class="capability-item"><span class="capability-icon"></span>getTicketDetails</div>
+                            <div class="capability-item"><span
+                                    class="capability-icon"></span>getAllTicketDetailsOfTheUser</div>
+                            <div class="capability-item"><span class="capability-icon"></span>getTicketClassification
+                            </div>
+                            <div class="capability-item"><span class="capability-icon"></span>saveAnalysis</div>
+                        </div>
+                    </div>
+
+                    <div class="capability-group">
+                        <button class="group-header" onclick="toggleGroup(this)">
+                            <span>Knowledge Base & Hardware Assistance</span>
+                            <span class="plus">+</span>
+                        </button>
+                        <div class="group-body">
+                            <div class="capability-item"><span class="capability-icon"></span>fetchKBArticles</div>
+                            <div class="capability-item"><span class="capability-icon"></span>paperJamIssue</div>
+                            <div class="capability-item"><span class="capability-icon"></span>serviceCatalogRequest
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="capability-group">
+                        <button class="group-header" onclick="toggleGroup(this)">
+                            <span>User Profile & Escalations</span>
+                            <span class="plus">+</span>
+                        </button>
+                        <div class="group-body">
+                            <div class="capability-item"><span class="capability-icon"></span>getUsersDetails</div>
+                            <div class="capability-item"><span class="capability-icon"></span>transferToLiveAgent</div>
+                            <div class="capability-item"><span class="capability-icon"></span>sendInstructionsViaEmail
+                            </div>
+                            <div class="capability-item"><span
+                                    class="capability-icon"></span>sendIncidentDetailsViaEmail</div>
+                            <div class="capability-item"><span class="capability-icon"></span>outageNotification</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TAB 2: AGENTIC PLATFORM CAPABILITIES -->
+                <div id="agentic" class="tab-content animate__animated animate__jackInTheBox">
+                    <div class="info-card">
+                        <h3>Agentic Platform Capabilities</h3>
+                        <p class="card-description">Faith uses autonomous conversational workflows to understand IT
+                            issues, automate ticket management, guide users through troubleshooting, and seamlessly
+                            initiate supported IT actions.</p>
+                        <ul class="clean-list">
+                            <li>Autonomous Problem Solving</li>
+                            <li>Multi-Step Workflow Execution</li>
+                            <li>Proactive System Alerts</li>
+                            <li>Seamless Live Agent Handoff</li>
+                            <li>Automated Communication Dispatch</li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="capability-group">
-                    <button class="group-header" onclick="toggleGroup(this)">
-                        <span>Ticket Tracking & Analytics</span>
-                        <span class="plus">+</span>
-                    </button>
-                    <div class="group-body">
-                        <div class="capability-item"><span class="capability-icon"></span>getTicketDetails</div>
-                        <div class="capability-item"><span class="capability-icon"></span>getAllTicketDetailsOfTheUser</div>
-                        <div class="capability-item"><span class="capability-icon"></span>getTicketClassification</div>
-                        <div class="capability-item"><span class="capability-icon"></span>saveAnalysis</div>
+                <!-- TAB 3: ITSM SYSTEM CONFIGURATION -->
+                <div id="configuration" class="tab-content animate__animated animate__jackInTheBox">
+                    <div class="info-card">
+                        <h3>ITSM System Configuration</h3>
+                        <p class="card-description">Faith integrates deeply with enterprise ITSM infrastructure to
+                            synchronize ticket statuses, automate lifecycle management, and streamline service catalog
+                            fulfillment.</p>
+                        <ul class="clean-list">
+                            <li>Bi-directional Ticket Syncing</li>
+                            <li>Intelligent Ticket Classification</li>
+                            <li>Service Catalog Request Integration</li>
+                            <li>Automated Escalation Matrix</li>
+                            <li>User Profile & Asset Synchronization</li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="capability-group">
-                    <button class="group-header" onclick="toggleGroup(this)">
-                        <span>Knowledge Base & Hardware Assistance</span>
-                        <span class="plus">+</span>
-                    </button>
-                    <div class="group-body">
-                        <div class="capability-item"><span class="capability-icon"></span>fetchKBArticles</div>
-                        <div class="capability-item"><span class="capability-icon"></span>paperJamIssue</div>
-                        <div class="capability-item"><span class="capability-icon"></span>serviceCatalogRequest</div>
+                <!-- TAB 4: CONVERSATIONAL INTELLIGENCE -->
+                <div id="conversation" class="tab-content animate__animated animate__jackInTheBox">
+                    <div class="info-card">
+                        <h3>Conversational Intelligence</h3>
+                        <p class="card-description">Powered by advanced generative AI, Faith interprets natural human
+                            queries, retrieves knowledge-base insights, and handles complex multi-modal interactions
+                            effortlessly.</p>
+                        <ul class="clean-list">
+                            <li>Natural Language Understanding (NLU)</li>
+                            <li>RAG-Powered Knowledge Base Search</li>
+                            <li>Context-Aware Diagnostic Engine</li>
+                            <li>Multi-Modal Interaction Support</li>
+                            <li>Sentiment & Intent Detection</li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="capability-group">
-                    <button class="group-header" onclick="toggleGroup(this)">
-                        <span>User Profile & Escalations</span>
-                        <span class="plus">+</span>
-                    </button>
-                    <div class="group-body">
-                        <div class="capability-item"><span class="capability-icon"></span>getUsersDetails</div>
-                        <div class="capability-item"><span class="capability-icon"></span>transferToLiveAgent</div>
-                        <div class="capability-item"><span class="capability-icon"></span>sendInstructionsViaEmail</div>
-                        <div class="capability-item"><span class="capability-icon"></span>sendIncidentDetailsViaEmail</div>
-                        <div class="capability-item"><span class="capability-icon"></span>outageNotification</div>
-                    </div>
-                </div>
+            </section>
 
-            </div>
+        </main>
 
-            <!-- TAB 2: AGENTIC PLATFORM CAPABILITIES -->
-            <div id="agentic" class="tab-content">
-                <div class="info-card">
-                    <h3>Agentic Platform Capabilities</h3>
-                    <p class="card-description">Faith uses autonomous conversational workflows to understand IT issues, automate ticket management, guide users through troubleshooting, and seamlessly initiate supported IT actions.</p>
-                    <ul class="clean-list">
-                        <li>Autonomous Problem Solving</li>
-                        <li>Multi-Step Workflow Execution</li>
-                        <li>Proactive System Alerts</li>
-                        <li>Seamless Live Agent Handoff</li>
-                        <li>Automated Communication Dispatch</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- TAB 3: ITSM SYSTEM CONFIGURATION -->
-            <div id="configuration" class="tab-content">
-                <div class="info-card">
-                    <h3>ITSM System Configuration</h3>
-                    <p class="card-description">Faith integrates deeply with enterprise ITSM infrastructure to synchronize ticket statuses, automate lifecycle management, and streamline service catalog fulfillment.</p>
-                    <ul class="clean-list">
-                        <li>Bi-directional Ticket Syncing</li>
-                        <li>Intelligent Ticket Classification</li>
-                        <li>Service Catalog Request Integration</li>
-                        <li>Automated Escalation Matrix</li>
-                        <li>User Profile & Asset Synchronization</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- TAB 4: CONVERSATIONAL INTELLIGENCE -->
-            <div id="conversation" class="tab-content">
-                <div class="info-card">
-                    <h3>Conversational Intelligence</h3>
-                    <p class="card-description">Powered by advanced generative AI, Faith interprets natural human queries, retrieves knowledge-base insights, and handles complex multi-modal interactions effortlessly.</p>
-                    <ul class="clean-list">
-                        <li>Natural Language Understanding (NLU)</li>
-                        <li>RAG-Powered Knowledge Base Search</li>
-                        <li>Context-Aware Diagnostic Engine</li>
-                        <li>Multi-Modal Interaction Support</li>
-                        <li>Sentiment & Intent Detection</li>
-                    </ul>
-                </div>
-            </div>
-
+        <!-- RIGHT PANEL -->
+        <section class="right-panel animate__animated animate__zoomInUp animate__delay-2s">
+            <div id="mobile-container"></div>
         </section>
 
-    </main>
-
-    <!-- RIGHT PANEL -->
-    <section class="right-panel">
-        <div id="mobile-container"></div>
-    </section>
-
-</div>
+    </div>
 
 
-<!-- JAVASCRIPT -->
-<script>
-function openTab(tabId, clickedTab) {
-    const contents = document.querySelectorAll('.tab-content');
-    contents.forEach(function(content) {
-        content.classList.remove('active');
-    });
+    <!-- JAVASCRIPT -->
+    <script>
+        function openTab(tabId, clickedTab) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(function (content) {
+                content.classList.remove('active');
+            });
 
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(function(tab) {
-        tab.classList.remove('active');
-    });
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(function (tab) {
+                tab.classList.remove('active');
+            });
 
-    document.getElementById(tabId).classList.add('active');
-    clickedTab.classList.add('active');
-}
+            document.getElementById(tabId).classList.add('active');
+            clickedTab.classList.add('active');
+        }
 
-function toggleGroup(button) {
-    const group = button.parentElement;
-    group.classList.toggle('open');
-}
-</script>
+        function toggleGroup(button) {
+            const group = button.parentElement;
+            group.classList.toggle('open');
+        }
+    </script>
 
-<!-- AVAAMO SCRIPT -->
-<script type="text/javascript"> 
-var AvaamoAgentic = function(t) {
-    return this.options = t || {}, this.init = function(t) {
-        var i, n, e;
-        i = this.options, n = function(i) {
-            var n = setInterval(function() {
-                if (window.PromptWidget) {
-                    window.PromptWidget.init(i.container || "#mobile-container");
-                    if ("function" == typeof t) t();
-                    clearInterval(n);
-                }
-            }, 100);
-        }, (e = document.createElement("script")).setAttribute("type", "text/javascript"), e.setAttribute("src", i.url), e.setAttribute("id", "avm-web-channel"), e.onload = n(i), document.body.appendChild(e);
-    }, this;
-}; 
 
-var widget = new AvaamoAgentic({
-    url: "https://c0.avaamo.com/web_channel/channel/42884335-4672-408f-b6b4-8c3adbacc16c/agentic_agents/widget.js", 
-    container: "#mobile-container"
-}); 
 
-widget.init(); 
-</script>
+    <!-- AVAAMO SCRIPT -->
+    <script type="text/javascript">
+        var AvaamoAgentic = function (t) {
+            return this.options = t || {}, this.init = function (t) {
+                var i, n, e;
+                i = this.options, n = function (i) {
+                    var n = setInterval(function () {
+                        if (window.PromptWidget) {
+                            window.PromptWidget.init(i.container || "#mobile-container");
+                            if ("function" == typeof t) t();
+                            clearInterval(n);
+                        }
+                    }, 100);
+                }, (e = document.createElement("script")).setAttribute("type", "text/javascript"), e.setAttribute("src", i.url), e.setAttribute("id", "avm-web-channel"), e.onload = n(i), document.body.appendChild(e);
+            }, this;
+        };
+
+        var widget = new AvaamoAgentic({
+            url: "https://c0.avaamo.com/web_channel/channel/42884335-4672-408f-b6b4-8c3adbacc16c/agentic_agents/widget.js",
+            container: "#mobile-container"
+        });
+
+        widget.init(); 
+    </script>
 
 </body>
+
 </html>

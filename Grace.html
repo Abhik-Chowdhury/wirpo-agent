@@ -1,577 +1,768 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GRACE - HR Partner</title>
+    <title>GRACE - HR Partner</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<style>
-
-/* =========================================================
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        /* =========================================================
    GLOBAL & SCROLLING FIX
 ========================================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html,
-body {
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
+        html,
+        body {
+            width: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background: #ffffff;
-    color: #1e293b;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1e293b;
+        }
 
+        :root {
+            /* Developer blue */
+            --main-color: #2563eb;
+            --main-color-light: #60a5fa;
+            --main-color-dark: #1d4ed8;
+        }
 
-/* =========================================================
+        /* =========================================================
    MAIN PAGE
 ========================================================= */
 
-.page {
-    width: 100%;
-    min-height: 1050px;
-    position: relative;
-}
+        .page {
+            width: 100%;
+            min-height: 1050px;
+            position: relative;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    TOP HEADER
 ========================================================= */
 
-.header {
-    height: 76px;
-    padding: 20px 42px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #f1f5f9;
-    background: #ffffff;
-    position: relative;
-    z-index: 10;
-    width: calc(100% - 450px);
-}
+        .header {
+            height: 76px;
+            padding: 20px 42px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #f1f5f9;
+            background: #ffffff;
+            position: relative;
+            z-index: 10;
+            width: calc(100% - 450px);
+        }
 
-.breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    font-size: 14px;
-    color: #64748b;
-}
-
-.back-btn {
-    border: none;
-    background: #f8fafc;
-    padding: 8px 14px;
-    border-radius: 8px;
-    color: #475569;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.back-btn:hover {
-    background: #f1f5f9;
-}
-
-.breadcrumb-arrow {
-    color: #cbd5e1;
-    font-size: 20px;
-}
-
-.breadcrumb-current {
-    color: #334155;
-    font-weight: 600;
-}
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            font-size: 14px;
+            color: #64748b;
+        }
 
 
-/* =========================================================
+
+        .back-btn {
+            border: none;
+            background: #f8fafc;
+            padding: 8px 14px;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 13px;
+            cursor: pointer;
+            background: linear-gradient(135deg,
+                    var(--main-color-dark),
+                    var(--main-color-light));
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.20);
+        }
+
+        .back-btn:hover {
+            transform: translateX(-2px);
+
+            box-shadow:
+                0 15px 35px rgba(37, 99, 135, 0.30);
+        }
+
+        .breadcrumb-arrow {
+            color: #cbd5e1;
+            font-size: 20px;
+        }
+
+        .breadcrumb-current {
+            color: #334155;
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
    MAIN CONTENT AREA
 ========================================================= */
 
-.content {
-    min-height: calc(100vh - 76px);
-    display: flex;
-    position: relative;
-}
+        .content {
+            min-height: calc(100vh - 76px);
+            display: flex;
+            position: relative;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    LEFT SECTION
 ========================================================= */
 
-.left-panel {
-    width: calc(100% - 450px);
-    min-height: 100%;
-    padding: 28px 42px 35px 42px;
-}
+        .left-panel {
+            width: calc(100% - 450px);
+            min-height: 100%;
+            padding: 28px 42px 35px 42px;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    AGENT HEADER
 ========================================================= */
 
-.agent-header {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-bottom: 27px;
-}
+        .agent-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 27px;
+        }
 
-.agent-avatar {
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #dbeafe, #ede9fe);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Sora', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    color: #2563eb;
-    border: 3px solid #ffffff;
-    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
-}
+        .agent-avatar {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #dbeafe, #ede9fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sora', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #2563eb;
+            border: 3px solid #ffffff;
+            box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
+        }
 
-.agent-title h1 {
-    font-family: 'Sora', sans-serif;
-    font-size: 30px;
-    line-height: 1.15;
-    color: #334155;
-    font-weight: 700;
-}
+        .agent-title h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: 30px;
+            line-height: 1.15;
+            color: #334155;
+            font-weight: 700;
+        }
 
-.agent-title p {
-    margin-top: 5px;
-    font-size: 14px;
-    color: #64748b;
-}
+        .agent-title p {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #64748b;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    TABS
 ========================================================= */
 
-.tabs {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    background: #f8fafc;
-    border-radius: 22px;
-    padding: 4px;
-    margin-bottom: 22px;
-    border: 1px solid #f1f5f9;
-}
+        .tabs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            background: #f8fafc;
+            border-radius: 22px;
+            padding: 6px;
+            margin-bottom: 22px;
+            border: 1px solid #f1f5f9;
 
-.tab {
-    border: none;
-    background: transparent;
-    padding: 10px 17px;
-    border-radius: 18px;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: #64748b;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
+            /* 📱 RESPONSIVE FIX: Enables smooth mobile horizontal scrolling if tabs overflow */
+            max-width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
 
-.tab:hover {
-    color: #334155;
-}
+            /* Hides messy scrollbars on Webkit browsers (Chrome/Safari) */
+            -webkit-overflow-scrolling: touch;
 
-.tab.active {
-    background: #ffffff;
-    color: #7c5ce6;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.07);
-}
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hides scrollbars for Firefox & IE */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .tab {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+
+            border: none;
+            background: transparent;
+            padding: 10px 16px;
+            border-radius: 18px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            line-height: 1;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: 0.2s ease;
+            flex-shrink: 0;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .tab-icon {
+            display: inline-block;
+            width: 20px;
+            /* Adjust width as needed */
+            height: 20px;
+            /* Adjust height as needed */
+            vertical-align: middle;
+            margin-right: 8px;
+            /* Spacing between icon and text */
+
+            /* Grabs the unique image string from the HTML style attribute */
+            -webkit-mask-image: var(--icon-url);
+            mask-image: var(--icon-url);
+
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+
+            /* 🎨 DEFAULT COLOR (When tab is inactive) */
+            background-color: #888888;
+            transition: background-color 0.2s ease;
+            /* Smooth color transition */
+        }
+
+        .tab:hover {
+            color: #334155;
+        }
+
+        .tab.active {
+            background: #ffffff;
+            color: #7c5ce6;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.07);
+            animation-name: premiumPulse;
+            animation-duration: 0.35s;
+            animation-fill-mode: both;
+            animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .tab.active .tab-icon {
+            background-color: #2563eb;
+            /* Replace with your desired active color */
+            /* Apply the animate.css for bounce */
+            animation: bounce 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+        }
+
+        /* 🔄 Smoothly resets the icon when hovering out/switching tabs */
+        .tab .tab-icon {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+        /* 📦 Animate.css Bounce Keyframes (Included directly so you don't rely on extra HTML classes) */
+        @keyframes bounce {
+
+            from,
+            20%,
+            53%,
+            80%,
+            to {
+                transform: translate3d(0, 0, 0);
+            }
+
+            40%,
+            43% {
+                transform: translate3d(0, -6px, 0) scaleY(1.1);
+            }
+
+            70% {
+                transform: translate3d(0, -4px, 0) scaleY(1.05);
+            }
+
+            90% {
+                transform: translate3d(0, -2px, 0) scaleY(1.02);
+            }
+        }
+
+        /* Tab transition */
+        /* ==========================================
+   ANIMATION KEYFRAMES
+   ========================================== */
+        @keyframes premiumPulse {
+            from {
+                transform: scale3d(1, 1, 1);
+            }
+
+            30% {
+                transform: scale3d(0.96, 0.96, 0.96);
+                /* Subtle tactile "press down" effect */
+            }
+
+            65% {
+                transform: scale3d(1.03, 1.03, 1.03);
+                /* Soft elastic recovery rebound */
+            }
+
+            to {
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        /* tab resposive and mobile optimization */
+        /* 📱 MOBILE MEDIA QUERY Optimization */
+        @media (max-width: 600px) {
+            .tabs {
+                width: 100%;
+                /* Allows container to span full width on phone screens */
+                border-radius: 16px;
+                /* Slightly tighter radius for smaller viewports */
+                padding: 4px;
+                gap: 4px;
+            }
+
+            .tab {
+                padding: 8px 12px;
+                /* Reduces padding slightly so more tabs fit on screen */
+                border-radius: 12px;
+                font-size: 12px;
+            }
+
+            .tab-icon {
+                width: 16px;
+                /* Shrinks down beautifully on mobile layouts */
+                height: 16px;
+                margin-right: 6px;
+            }
+        }
 
 
-/* =========================================================
+        /* =========================================================
    TAB CONTENT
 ========================================================= */
 
-.tab-content {
-    display: none;
-}
+        .tab-content {
+            display: none;
+        }
 
-.tab-content.active {
-    display: block;
-}
+        .tab-content.active {
+            display: block;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    ACCORDION (AGENT FUNCTIONALITIES)
 ========================================================= */
 
-.capability-group {
-    border-bottom: 1px solid #e5e7eb;
-}
+        .capability-group {
+            border-bottom: 1px solid #e5e7eb;
+        }
 
-.group-header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 17px 10px;
-    border: none;
-    background: #ffffff;
-    color: #334155;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    text-align: left;
-    cursor: pointer;
-}
+        .group-header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 17px 10px;
+            border: none;
+            background: #ffffff;
+            color: #334155;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+        }
 
-.group-header:hover {
-    background: #fafafa;
-}
+        .group-header:hover {
+            background: #fafafa;
+        }
 
-.group-header .plus {
-    font-size: 20px;
-    font-weight: 400;
-    color: #64748b;
-    transition: transform 0.25s ease;
-}
+        .group-header .plus {
+            font-size: 20px;
+            font-weight: 400;
+            color: #64748b;
+            transition: transform 0.25s ease;
+        }
 
-.capability-group.open .plus {
-    transform: rotate(45deg);
-}
+        .capability-group.open .plus {
+            transform: rotate(45deg);
+        }
 
-.group-body {
-    display: none;
-    padding: 0 10px 14px 10px;
-    animation: slideDown 0.2s ease;
-}
+        .group-body {
+            display: none;
+            padding: 0 10px 14px 10px;
+            animation: slideDown 0.2s ease;
+        }
 
-.capability-group.open .group-body {
-    display: block;
-}
+        .capability-group.open .group-body {
+            display: block;
+        }
 
-.capability-item {
-    display: flex;
-    align-items: center;
-    padding: 10px 14px;
-    margin: 4px 0;
-    border-radius: 8px;
-    font-size: 13px;
-    color: #475569;
-    background: #fafafa;
-}
+        .capability-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 14px;
+            margin: 4px 0;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #475569;
+            background: #fafafa;
+        }
 
-.capability-item:hover {
-    background: #f8fafc;
-    color: #1e293b;
-}
+        .capability-item:hover {
+            background: #f8fafc;
+            color: #1e293b;
+        }
 
-.capability-icon {
-    width: 6px;
-    height: 6px;
-    background: #7c5ce6;
-    border-radius: 50%;
-    margin-right: 12px;
-    flex-shrink: 0;
-}
+        .capability-icon {
+            width: 6px;
+            height: 6px;
+            background: #7c5ce6;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    GREY CARD STYLE
 ========================================================= */
 
-.info-card {
-    border: 1px solid #ebf0f5;
-    border-radius: 16px;
-    padding: 28px 32px;
-    background: #f8fafc;
-    max-width: 850px;
-}
+        .info-card {
+            border: 1px solid #ebf0f5;
+            border-radius: 16px;
+            padding: 28px 32px;
+            background: #f8fafc;
+            max-width: 850px;
+        }
 
-.info-card h3 {
-    font-family: 'Sora', sans-serif;
-    font-size: 20px;
-    color: #1e293b;
-    margin-bottom: 12px;
-    font-weight: 700;
-}
+        .info-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 20px;
+            color: #1e293b;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
 
-.card-description {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #64748b;
-    margin-bottom: 24px;
-}
+        .card-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #64748b;
+            margin-bottom: 24px;
+        }
 
-.clean-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-}
+        .clean-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+        }
 
-.clean-list li {
-    font-size: 14px;
-    font-weight: 500;
-    color: #475569;
-    padding: 16px 0;
-    border-top: 1px solid #e2e8f0;
-    transition: color 0.2s ease;
-}
+        .clean-list li {
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+            padding: 16px 0;
+            border-top: 1px solid #e2e8f0;
+            transition: color 0.2s ease;
+        }
 
-.clean-list li:hover {
-    color: #1e293b;
-}
+        .clean-list li:hover {
+            color: #1e293b;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    RIGHT PANEL
 ========================================================= */
 
-.right-panel {
-    width: 460px;
-    height: 945px;
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    overflow: visible;
-    background: transparent;
-    z-index: 100;
-    transform: scale(0.92);
-    transform-origin: top right;
-}
+        .right-panel {
+            width: 460px;
+            height: 945px;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            overflow: visible;
+            background: transparent;
+            z-index: 100;
+            transform: scale(0.92);
+            transform-origin: top right;
+        }
 
-#mobile-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
+        #mobile-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
 
-#mobile-container iframe,
-#mobile-container > div {
-    width: 100% !important;
-    height: 100% !important;
-    border: none !important;
-    outline: none !important;
-}
+        #mobile-container iframe,
+        #mobile-container>div {
+            width: 100% !important;
+            height: 100% !important;
+            border: none !important;
+            outline: none !important;
+        }
 
 
-/* =========================================================
+        /* =========================================================
    ANIMATION & RESPONSIVE
 ========================================================= */
 
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-4px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-4px);
+            }
 
-@media (max-width: 1000px) {
-    .header, .left-panel { width: 100%; }
-    .right-panel { display: none; }
-}
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-</style>
+        @media (max-width: 1000px) {
+
+            .header,
+            .left-panel {
+                width: 100%;
+            }
+
+            .right-panel {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 
 <body>
 
-<div class="page">
+    <div class="page">
 
-    <!-- HEADER -->
-  <header class="header">
-    <div class="breadcrumb">
-        <button class="back-btn" onclick="location.href='index.html'">Back</button>
-        <span class="breadcrumb-arrow">›</span>
-        <span class="breadcrumb-current">Grace</span>
-    </div>
-</header>
-
-
-    <!-- MAIN CONTENT -->
-    <main class="content">
-
-        <!-- LEFT PANEL -->
-        <section class="left-panel">
-
-            <div class="agent-header">
-                <div class="agent-avatar">G</div>
-                <div class="agent-title">
-                    <h1>Meet Grace,</h1>
-                    <p>Your HR Partner</p>
-                </div>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="breadcrumb">
+                <button class="back-btn" onclick="location.href='index.html'">Back</button>
+                <span class="breadcrumb-arrow">›</span>
+                <span class="breadcrumb-current">Grace</span>
             </div>
+        </header>
 
-            <!-- TABS -->
-            <div class="tabs">
-                <button class="tab active" onclick="openTab('functionalities', this)">Agent Functionalities</button>
-                <button class="tab" onclick="openTab('agentic', this)">Agentic Platform Capabilities</button>
-                <button class="tab" onclick="openTab('configuration', this)">HR System Configuration</button>
-                <button class="tab" onclick="openTab('conversation', this)">Conversational Intelligence</button>
-            </div>
 
-            <!-- TAB 1: AGENT FUNCTIONALITIES -->
-            <div id="functionalities" class="tab-content active">
+        <!-- MAIN CONTENT -->
+        <main class="content">
 
-                <div class="capability-group">
-                    <button class="group-header" onclick="toggleGroup(this)">
-                        <span>Recruitment & Career</span>
-                        <span class="plus">+</span>
-                    </button>
-                    <div class="group-body">
-                        <div class="capability-item"><span class="capability-icon"></span>job_opening</div>
-                        <div class="capability-item"><span class="capability-icon"></span>internalTransfer</div>
+            <!-- LEFT PANEL -->
+            <section class="left-panel animate__animated animate__fadeInUp">
+
+                <div class="agent-header">
+                    <div class="agent-avatar">G</div>
+                    <div class="agent-title">
+                        <h1>Meet Grace,</h1>
+                        <p>Your HR Partner</p>
                     </div>
                 </div>
 
-                <div class="capability-group">
-                    <button class="group-header" onclick="toggleGroup(this)">
-                        <span>Onboarding & Orientation</span>
-                        <span class="plus">+</span>
-                    </button>
-                    <div class="group-body">
-                        <div class="capability-item"><span class="capability-icon"></span>onboardingTasks</div>
-                        <div class="capability-item"><span class="capability-icon"></span>orientation_Scheduling</div>
+                <!-- TABS -->
+                <div class="tabs">
+                    <button class="tab active" onclick="openTab('functionalities', this)"><span
+                            class="tab-icon animate__animated animate__bounce"
+                            style="--icon-url: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADT0lEQVR4nO2Yy29NURTGf60bSkdloCpBO/GMVyjRCiGopkZIOmGkYiQmBh5RTBSDiz8AJQyMPIpQJFQn6hG3DxratEkrlXLNVBrJlZ2sk6yc3J5Xe+/pjfMle7L22mut75y99tprQ4QIESJEiBDh/0I+sBaoA84AV4CbQBPQCnQBPcAQkJQxAqRk/FHyIdHtkrVNYsvYPAscBMrF54RhGnAUGFBBZWsMim8Tw7iwEOhUhnuBa0A9cBjYB9QAFcBSoAwoBopkFChbBUpeLLpLZG2N2DI2T4mPXuXX/LlFQUkYJ8PKUBWQR3axQ33IYflYvjAD+CwGzP4tzEycnmO5L7F0+43luCxM2LbHFGAbcBK4BDSKk1dAu49kHxbdDqBFbDSKTWN7OxBTfk0MH8WOmXdFqy3ZNqu5UuB9FhP9g+SRhU22+ddORLTiVyWPSZ5k+9T6ZPsz3bZ5T0TMr7ZQHQKJlAxzolm4GoTIMSWvD5HI6TS564vIbiW/5eBog81GpYfg/Ky5rfT2BiGyQsnbHBy52RnvmjalsyoIkflK3hcikX6lUxKEyEwlT4ZIJKl0ZgUhMlXJRx0cmf2tsdEDET9rRpVeYSaJZHqMqjhiXom0KCXzGy38DJFI0hbjG5Gba5EjBtMke3+IRPoICOs+tdLj8eulTmhU+LTVFpTII58FMd0wwY4FLwUzNUZBNGgGnnghcnkSX1HKlFxv/bQ4JIrXlWznJLk01iq5ua44olwUv9gaqo4QSHTarvFxNXfRjUi+dHn2xmoB8DaLJN5JM6fRbpt3xQmHVneLzMdl+90FXopujxzfVkv7WzkeUfJvopuQenBPbMXF9lbx5Vb913tp+K2O8GHIjw8Gc9N0hymJ0TwtOWIx8F21nNVZfg7Kk3y9APxy2ILm1tEgr6B5Tg90CVuVbVQPdPuBXVIblsnxWKIe4qYrWzElL5L9v1xqTpWcQroIvwiQV8+cvozJkSMuPUkm7lXPA6xv9vqrVwMH1CP2DeCBXDY7JIEHxkj2v0qelA+TkCeox8AdqWH2rdXg0g/9AM4Ba0J4CfWNOerl015nZpNjqExDZB05ioQiYYpzziKuiJwnh1GriOwhh1GqiMwjx/HUa2MVIQITh3/vBVOqc2166wAAAABJRU5ErkJggg==')"
+                            src="" alt="ai-agent"></span>Agent Functionalities</button>
+                    <button class="tab" onclick="openTab('agentic', this)"><span class="tab-icon"
+                            style="--icon-url: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAADrklEQVR4nO2dyWpUQRSGvziFiBpc6EJFjNPCAXQRRVEXGvME+gIudaFLV6IbFy4dMCYOCCIKceFKFBwfQCFxyEZXrpzFeUiOFFSkCUmnc4euU7fOBz803fdWn3P+dN+6VdUVMAzDMAzDMAzDMAxjcnYDfcAQ8BWQRPUVeAH0Al3NKPxq4KGCxEWpHgCryir+DuCDgiRFud4D28v4y7fiMyUTVhZpwD0FSUmEX0eFXXBDJyORalcRBpxXkIhEqnNFGDCkIBGJVK6LmpsvChKRSOVql5vQSUjkMgMwA5JWbkLezGwANvrHoQuZnAFHa2I4pqCQSRnwB1hSE8Mi4LeCYiZjQP84cfQrKGYSBgz77/2xrPevhS5o5Q24VCeWywoKWmkDngPz6sQyBxhUUNRKGjAILG0gHnfMUwWFrYwBI8BVoH0KMbX7c0YUFDhaA0aAO8DWHLG5c28rN0KdAT+BC75XUxTrfJs/FRRcvQFuhq0suhQUXL0BiymPRQoKrt6AJ0A30EJxtPhP1mMFBVdvwKgGgH1Aa47YWn0bAwoKHZ0B4vUS2JMhrr3AKwUFjt4A8XLrK2c2EM8M4JSCwlbOAAGuTXJtcK9dV1DUyhogwOE6sRzO2OZ3oNPLPTYD6ujHBGNCrvv6LWObbnHZKO6GzQyYQsFG6cvY1l9gzf9WYK1/zgyg/qdgYU0MC/xzRZl50QyYXEdqYjiSsY2hCeYX5jZxSDtaA977qUmndxnXZS6rk1eHP8YMoFi5oekrwPwGcpvvjy1zODsZA4aBG8CmDDl2+nPLmPRPxoDuAnJ1bZgBZNPyAnJdYQaQWa+BQ76HM1XcOQd9G2YA+fQW2A9MbyA3d8wB4E2J8SRngHjdamCN0c0mxJGsAQI8AmaNk5Mb9r7bpBiSNkCA4+PkdKKJ75+8Ab9876b2DriZy1eSN0DG/F4366iqGUB2uUmYzcAWm5BJT7kJnYBELjOAyA2wrQrIrM9FGGCbdZDrFz+56VWQiESqs1Vd8i2RaCcF0axxE6mQ7lMgHX6YN3RSkuqmffitGGPeNEOaJLeCYxsl4Vy1HRSZUHfHDPyVxi4/wPU88fuEL8AzoKfIC24oZAJpbbdyiBkQFjEDwiJmQFjEDAiLmAFhETMgLGIGhEXMgLCIGVAOs4EzwKcGbu1FiT4Cp4E2KkCPgoJKRrnYo2ZagIVQUqC++RyixQxQQE/qk+qhafPby3xUUFBpUO5/pp2sykXYMAzDMAzDMAzDMFDDP/lzetw5UE4/AAAAAElFTkSuQmCC')"
+                            src="" alt="ai-agent-capable"></span>Agentic Platform Capabilities</button>
+                    <button class="tab" onclick="openTab('configuration', this)"><span class="tab-icon"
+                            style="--icon-url: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACv0lEQVR4nO2ZW4hOURTHf02axiWXJPIyyv0BeRLFA2kShojEi3j04EHkTc0TKc0DDxQh0ZAX5EEkKU00H7lfMiTlfquJcZnvaNWa+jr2OWeffb7vs890/rVevu/stc9vn7XXWXsdKFSokC9aCpwCXgA9wHZypgbgBBAY7ANwDphJDrQlAqLSvgIT8VxdFiBiB/FcPZYg9/BcXyxBXuK5bluCdOK5jgyUPfLcEuQJnuuaJcglPNcEi8z1DWgmBzqcAHKAnGg4cCUmpIaSIzVGgMjvuVNgsNxpfASI/J4bzQJKESBdvpfxDUArcBkoJ2Stsl7XquO80XzggeWLMGwPgQV4oMXAT0eIQE3Gt/xvkPsZIQJfaq+rVQK5zgDUSGAP8Br4oYs118XRNGCHZpbHWuR9BO4CZ4FNwGhqow3AW8MT6wXm2DhoAjYCNy1D4TdwGphXJYCpMfVZv52PcyBtmb264q7xLcfWdcAgB4AmoE1XPGmezyYHkrsvAn1V2qxirzQkR1lCtADPUvg3Niw+VREgbHKw2g9MjgCQeqvDwa88uX8U1MH6tEW6sGJeCb9uB18Xoo4Arjf3R094ZzSb2Y67A8zWuTenGFcGdsftP1eQWxU+ZIUWAfuAp5Z1FbqHbOaS8F8WBZAVRMKlXZNFeJWmANs0jf4yjH2j1w2zzITNSRBZQMIrdhJYb3hBjgDWAseA98A7YJX+tyLBb3uaI3E1QMJ7R+qlncCMhMZEd8znhtW2ALUCMeV8SQpL9OaHAMtjOpElYFJaiHqApLHjCuqkwAP7rgVoJkXFaJuWzJIixwIrgUM1qATkQDY9K4QJRMrzMTHXN2qzoENXMgvE0SyhFFa/Uzm4bCWdBgNrtKw2vS+izGWuRN3Qr0tZe0zj9OY6EyAe+d7PqpRUu7u0Cder3ZGSvu3l3FGoUCHqo78IWuw/Q7ZI0wAAAABJRU5ErkJggg==')"
+                            src="" alt="ai-agent-capable"></span>HR System Configuration</button>
+                    <button class="tab" onclick="openTab('conversation', this)"><span class="tab-icon"
+                            style="--icon-url: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADnElEQVR4nO2ZbWjNURjAf2wS8xaG2FgWam9FTImURFnzTinlfeGDQt72waJ8UJMPNCTii0hYYiSy1eQlmQ98W23JS2QKY2uzXZ157jr39P+f+7/X/76s7q+eut3/8zznPPee5znPOX9IkSJFvEkHioBVwC7gALAX2AAsAQqB/iQpI4BtwD3gJxAIIy3ADWAnMJokYDxQCfwwJtoE1ACX5bmSS8Bd4J2h+xs4B+QlIoAhwCmgXSbTDTwAyoBcD/ZKZwvwWAtI+bgIjCROzAUaZfAOGVyt+2gpAM4Df8TnJ2ANMaZCG/CFJLVfzACeaf/QiVgUBeXwtAygAtkPpPk9CP/GKQe6ZKyrwEC/nKdJ0irHrUApsWeZVv1q/PrRjovDb0Ax8aNYC+bk/zorlWrSCSwk/iyWghKQKhcVk2TjUk52kDjKZA6/gOxoHNwWB7dILP2kYwgmf0Qs0H6FHBJPFvBd5jQ/EsOHYqT2jWThmMzpkVeDPDFoT5aGThgHtMnc8iKJ/JrDsyceOlu/pF4bdziwB3grz456CaRBlC8Au4Gh2rNAnCXIduP7Rum8rV1psD0IONTvRAWSK/uZ/kw1l/lOQUwHvhrKKqiJSRCI4rnD82ZgFMYafO+gWKcruQzWIr2R8rFc20Rt4tXGqVUyRR0BejnjonQkxJWzzkZDZ5OHQLza6Kx10ekMrposh7wIytIQV846mYZOpodAvNroFFr8HUJuONwUpoS48japMVEE4majM8Hir2eTrLUomBuil2WyOYql5Wajk2Hx9xnJfDeFASGunHVaJGFV4q6IINm92Ji4pYA6tfb2+6aodsAkEGfRGWTR67BF6fUfiVcgYy16H3HYBG1JmchACix69zEuyUyZZjirj2MQT42xV1p01f0yhy0K6tLZT+Z4CKBLrp4GG7bllvzoaSBztEs3Uw76HEi4Y0ADMNvF9o6LTZWuFLy3MiXiM7IF29JokjYl3cU2XTvq6tIsbwJ6UR3kBwfFLz5eW75xWEJ10kO5BRBknsPc1Hyn4kC+TNw0mIU/1MoZ4qa8AFI9nhdKjMraJadX1da4opKm2thbtpIYMuSGsVsrsevlvs0zk+VVmTrqDovhfdUiqVCvZFOrluVSorVOqirtE/2kQ11KX3dJ/Dbt80tgJknMujBluFU2uVi8uvCVqjCBVNJHqAgTyGr6CNmWM8iVvrCkdIqk7VCnu9fAWXkfkpTVKUUK+jh/AcLK/UaUtB1mAAAAAElFTkSuQmCC')"
+                            src="" alt="ai-agent-capable"></span>Conversational Intelligence</button>
+                </div>
+
+                <!-- TAB 1: AGENT FUNCTIONALITIES -->
+                <div id="functionalities" class="tab-content active animate__animated animate__jackInTheBox">
+
+                    <div class="capability-group">
+                        <button class="group-header" onclick="toggleGroup(this)">
+                            <span>Recruitment & Career</span>
+                            <span class="plus">+</span>
+                        </button>
+                        <div class="group-body">
+                            <div class="capability-item"><span class="capability-icon"></span>job_opening</div>
+                            <div class="capability-item"><span class="capability-icon"></span>internalTransfer</div>
+                        </div>
+                    </div>
+
+                    <div class="capability-group">
+                        <button class="group-header" onclick="toggleGroup(this)">
+                            <span>Onboarding & Orientation</span>
+                            <span class="plus">+</span>
+                        </button>
+                        <div class="group-body">
+                            <div class="capability-item"><span class="capability-icon"></span>onboardingTasks</div>
+                            <div class="capability-item"><span class="capability-icon"></span>orientation_Scheduling
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="capability-group">
+                        <button class="group-header" onclick="toggleGroup(this)">
+                            <span>Benefits & Compensation</span>
+                            <span class="plus">+</span>
+                        </button>
+                        <div class="group-body">
+                            <div class="capability-item"><span class="capability-icon"></span>benefits_enrollment</div>
+                        </div>
+                    </div>
+
+                    <div class="capability-group">
+                        <button class="group-header" onclick="toggleGroup(this)">
+                            <span>Leave & Attendance</span>
+                            <span class="plus">+</span>
+                        </button>
+                        <div class="group-body">
+                            <div class="capability-item"><span class="capability-icon"></span>get_upcoming_holidays
+                            </div>
+                            <div class="capability-item"><span class="capability-icon"></span>Medical Leave</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TAB 2: AGENTIC PLATFORM CAPABILITIES -->
+                <div id="agentic" class="tab-content animate__animated animate__jackInTheBox">
+                    <div class="info-card">
+                        <h3>Agentic Platform Capabilities</h3>
+                        <p class="card-description">Grace uses autonomous conversational workflows to understand HR
+                            inquiries, automate onboarding and benefits requests, and seamlessly assist employees
+                            throughout their lifecycle.</p>
+                        <ul class="clean-list">
+                            <li>Autonomous Problem Solving</li>
+                            <li>Multi-Step HR Workflow Execution</li>
+                            <li>Proactive Policy & Benefit Alerts</li>
+                            <li>Seamless HR Specialist Handoff</li>
+                            <li>Automated Communication Dispatch</li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="capability-group">
-                    <button class="group-header" onclick="toggleGroup(this)">
-                        <span>Benefits & Compensation</span>
-                        <span class="plus">+</span>
-                    </button>
-                    <div class="group-body">
-                        <div class="capability-item"><span class="capability-icon"></span>benefits_enrollment</div>
+                <!-- TAB 3: HR SYSTEM CONFIGURATION -->
+                <div id="configuration" class="tab-content animate__animated animate__jackInTheBox">
+                    <div class="info-card">
+                        <h3>HR System Configuration</h3>
+                        <p class="card-description">Grace integrates deeply with enterprise HRIS infrastructure to
+                            synchronize employee records, automate leave requests, and streamline onboarding workflows.
+                        </p>
+                        <ul class="clean-list">
+                            <li>Bi-directional HR Data Syncing</li>
+                            <li>Intelligent Request Classification</li>
+                            <li>HR Service Catalog Integration</li>
+                            <li>Automated Approval Escalations</li>
+                            <li>Employee Profile & Benefits Synchronization</li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="capability-group">
-                    <button class="group-header" onclick="toggleGroup(this)">
-                        <span>Leave & Attendance</span>
-                        <span class="plus">+</span>
-                    </button>
-                    <div class="group-body">
-                        <div class="capability-item"><span class="capability-icon"></span>get_upcoming_holidays</div>
-                        <div class="capability-item"><span class="capability-icon"></span>Medical Leave</div>
+                <!-- TAB 4: CONVERSATIONAL INTELLIGENCE -->
+                <div id="conversation" class="tab-content animate__animated animate__jackInTheBox">
+                    <div class="info-card">
+                        <h3>Conversational Intelligence</h3>
+                        <p class="card-description">Powered by advanced generative AI, Grace interprets natural human
+                            queries, retrieves HR policy insights, and handles complex multi-modal interactions
+                            effortlessly.</p>
+                        <ul class="clean-list">
+                            <li>Natural Language Understanding (NLU)</li>
+                            <li>RAG-Powered HR Policy Search</li>
+                            <li>Context-Aware Employee Support Engine</li>
+                            <li>Multi-Modal Interaction Support</li>
+                            <li>Sentiment & Intent Detection</li>
+                        </ul>
                     </div>
                 </div>
 
-            </div>
+            </section>
 
-            <!-- TAB 2: AGENTIC PLATFORM CAPABILITIES -->
-            <div id="agentic" class="tab-content">
-                <div class="info-card">
-                    <h3>Agentic Platform Capabilities</h3>
-                    <p class="card-description">Grace uses autonomous conversational workflows to understand HR inquiries, automate onboarding and benefits requests, and seamlessly assist employees throughout their lifecycle.</p>
-                    <ul class="clean-list">
-                        <li>Autonomous Problem Solving</li>
-                        <li>Multi-Step HR Workflow Execution</li>
-                        <li>Proactive Policy & Benefit Alerts</li>
-                        <li>Seamless HR Specialist Handoff</li>
-                        <li>Automated Communication Dispatch</li>
-                    </ul>
-                </div>
-            </div>
+        </main>
 
-            <!-- TAB 3: HR SYSTEM CONFIGURATION -->
-            <div id="configuration" class="tab-content">
-                <div class="info-card">
-                    <h3>HR System Configuration</h3>
-                    <p class="card-description">Grace integrates deeply with enterprise HRIS infrastructure to synchronize employee records, automate leave requests, and streamline onboarding workflows.</p>
-                    <ul class="clean-list">
-                        <li>Bi-directional HR Data Syncing</li>
-                        <li>Intelligent Request Classification</li>
-                        <li>HR Service Catalog Integration</li>
-                        <li>Automated Approval Escalations</li>
-                        <li>Employee Profile & Benefits Synchronization</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- TAB 4: CONVERSATIONAL INTELLIGENCE -->
-            <div id="conversation" class="tab-content">
-                <div class="info-card">
-                    <h3>Conversational Intelligence</h3>
-                    <p class="card-description">Powered by advanced generative AI, Grace interprets natural human queries, retrieves HR policy insights, and handles complex multi-modal interactions effortlessly.</p>
-                    <ul class="clean-list">
-                        <li>Natural Language Understanding (NLU)</li>
-                        <li>RAG-Powered HR Policy Search</li>
-                        <li>Context-Aware Employee Support Engine</li>
-                        <li>Multi-Modal Interaction Support</li>
-                        <li>Sentiment & Intent Detection</li>
-                    </ul>
-                </div>
-            </div>
-
+        <!-- RIGHT PANEL -->
+        <section class="right-panel animate__animated animate__zoomInUp animate__delay-2s">
+            <div id="mobile-container"></div>
         </section>
 
-    </main>
-
-    <!-- RIGHT PANEL -->
-    <section class="right-panel">
-        <div id="mobile-container"></div>
-    </section>
-
-</div>
+    </div>
 
 
-<!-- JAVASCRIPT -->
-<script>
-function openTab(tabId, clickedTab) {
-    const contents = document.querySelectorAll('.tab-content');
-    contents.forEach(function(content) {
-        content.classList.remove('active');
-    });
+    <!-- JAVASCRIPT -->
+    <script>
+        function openTab(tabId, clickedTab) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(function (content) {
+                content.classList.remove('active');
+            });
 
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(function(tab) {
-        tab.classList.remove('active');
-    });
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(function (tab) {
+                tab.classList.remove('active');
+            });
 
-    document.getElementById(tabId).classList.add('active');
-    clickedTab.classList.add('active');
-}
+            document.getElementById(tabId).classList.add('active');
+            clickedTab.classList.add('active');
+        }
 
-function toggleGroup(button) {
-    const group = button.parentElement;
-    group.classList.toggle('open');
-}
-</script>
+        function toggleGroup(button) {
+            const group = button.parentElement;
+            group.classList.toggle('open');
+        }
+    </script>
 
-<!-- AVAAMO SCRIPT -->
-<script type="text/javascript"> 
-var AvaamoAgentic = function(t) {
-    return this.options = t || {}, this.init = function(t) {
-        var i, n, e;
-        i = this.options, n = function(i) {
-            var n = setInterval(function() {
-                if (window.PromptWidget) {
-                    window.PromptWidget.init(i.container || "#mobile-container");
-                    if ("function" == typeof t) t();
-                    clearInterval(n);
-                }
-            }, 100);
-        }, (e = document.createElement("script")).setAttribute("type", "text/javascript"), e.setAttribute("src", i.url), e.setAttribute("id", "avm-web-channel"), e.onload = n(i), document.body.appendChild(e);
-    }, this;
-}; 
+    <!-- AVAAMO SCRIPT -->
+    <script type="text/javascript">
+        var AvaamoAgentic = function (t) {
+            return this.options = t || {}, this.init = function (t) {
+                var i, n, e;
+                i = this.options, n = function (i) {
+                    var n = setInterval(function () {
+                        if (window.PromptWidget) {
+                            window.PromptWidget.init(i.container || "#mobile-container");
+                            if ("function" == typeof t) t();
+                            clearInterval(n);
+                        }
+                    }, 100);
+                }, (e = document.createElement("script")).setAttribute("type", "text/javascript"), e.setAttribute("src", i.url), e.setAttribute("id", "avm-web-channel"), e.onload = n(i), document.body.appendChild(e);
+            }, this;
+        };
 
-var widget = new AvaamoAgentic({
-    url: "https://c0.avaamo.com/web_channel/channel/d9908341-b1e7-41f3-9443-ce2d42ee5d23/agentic_agents/widget.js", 
-    container: "#mobile-container"
-}); 
+        var widget = new AvaamoAgentic({
+            url: "https://c0.avaamo.com/web_channel/channel/d9908341-b1e7-41f3-9443-ce2d42ee5d23/agentic_agents/widget.js",
+            container: "#mobile-container"
+        });
 
-widget.init(); 
-</script>
+        widget.init(); 
+    </script>
 
 </body>
+
 </html>
